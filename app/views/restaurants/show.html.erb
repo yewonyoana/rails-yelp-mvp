@@ -1,0 +1,30 @@
+<div class="banner">
+  <div class="container mt-5">
+  </div>
+</div>
+<div class="container mt-2">
+  <div class="row justify-content-around">
+    <div class="col-12 col-sm-8">
+      <p>
+        <%= link_to '< Restaurants', restaurants_path, class: 'btn-light opacity-25 text-decoration-none' %>
+      </p>
+      <div class="d-flex align-items-center">
+        <h1 class="md-3 fw-bold"><%= @restaurant.name %></h1>
+      </div>
+      <p class="fw-lighter opacity-75 mt-2">📍: <%= @restaurant.address  %></p>
+      <p class="fw-lighter opacity-75 mt-2">📞: <%= @restaurant.phone_number  %></p>
+      <p class="fw-lighter opacity-75 mt-2 mb-5">🍴: <%= @restaurant.category  %></p>
+     <h3>Reviews
+      <%= link_to new_restaurant_review_path(@restaurant), class: "btn btn-sm border-dark rounded-circle"  do %><i class="fa-solid fa-plus "></i><% end %>
+      </h3>
+      <ul>
+        <% if @restaurant.reviews.any? %>
+          <% @restaurant.reviews.each do |review| %>
+            <li class="fw-lighter opacity-75 mt-2"><%= review.content %></li>
+          <% end %>
+        <% else %>
+          <li class="fw-lighter opacity-75">No reviews yet!</li>
+        <% end %>
+
+      </ul>
+</div>
